@@ -11,7 +11,7 @@ function ShoutOutList() {
 
     useEffect(() => {
         loadShoutOuts();
-        console.log(shoutOuts)
+        
     }, []);
 
     function loadShoutOuts() {
