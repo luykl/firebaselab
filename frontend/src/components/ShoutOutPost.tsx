@@ -1,7 +1,7 @@
 import ShoutOut from "../model/ShoutOut";
 import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/auth-context";
-import { likeShoutOut } from "../service/ShoutOutApiService";
+// import { likeShoutOut } from "../service/ShoutOutApiService";
 
 interface Props {
     shoutOut: ShoutOut;
@@ -13,13 +13,13 @@ function ShoutOutPost({ shoutOut }: Props) {
     const { user } = useContext(AuthContext);
     
 
-    useEffect(() => {
-        if (liked) {
-        likeShoutOut(shoutOut, user?.displayName!);
+    // useEffect(() => {
+    //     if (liked) {
+    //     likeShoutOut(shoutOut, user?.displayName!);
         
-        } 
+    //     } 
         
-    }, [liked]);
+    // }, [liked]);
 
 
     return (
