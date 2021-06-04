@@ -39,7 +39,7 @@ function ShoutOutForm({ onSubmit }: Props) {
       </p>
       <p>
         <label htmlFor="ShoutOutForm_message">Message</label>
-        <textarea id="ShoutOutForm_message" value={message} onChange={e => setMessage(e.target.value)}  />
+        <textarea id="ShoutOutForm_message" value={message} onChange={e => setMessage(e.target.value)}></textarea>
       </p>
       <p>
         <button type="submit">Create Shout Out</button>

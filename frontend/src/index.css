@@ -14,7 +14,9 @@ button {
 
 .ShoutOutPost {
   background-color: white;
-  border: 1px solid #aaa
+  border: 1px solid #aaa;
+  margin: 20px auto;
+  max-width: 500px;
 }
 
 
