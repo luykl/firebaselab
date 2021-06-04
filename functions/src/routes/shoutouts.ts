@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import { getClient } from '../db';
 import ShoutOut from '../model/ShoutOut';
+import { ObjectId } from "mongodb";
 
 // creates an Express application - allows us to create and and use APIs
 const app = express();
@@ -18,10 +19,33 @@ app.get("/hello", async (req, res) => {
   res.send("Hello World!");
 })
 
+
+  
+
 app.get("/", async (req, res) => {
+
+  const recipient = req.query.to;
+  const mongoQuery: any = {};
+  if (recipient) {
+    mongoQuery.to = recipient;
+  }
+
     try {
       const client = await getClient();
-      const results = await client.db().collection<ShoutOut>('shoutOuts').find().toArray();
+      const results = await client.db().collection<ShoutOut>('shoutOuts').find(mongoQuery).toArray();
+      res.json(results); // send JSON results
+    } catch (err) {
+      console.error("FAIL", err);
+      res.status(500).json({message: "Internal Server Error"});
+    }
+  });
+
+app.put("/:id/:user", async (req, res) => {
+    const id:string = req.params.id as string;
+    const user:string = req.params.user as string;
+    try {
+      const client = await getClient();
+      const results = await client.db().collection<ShoutOut>('shoutOuts').updateOne({_id: new ObjectId(id)}, {$push: {likes: user}});
       res.json(results); // send JSON results
     } catch (err) {
       console.error("FAIL", err);
@@ -42,6 +66,9 @@ app.get("/", async (req, res) => {
       res.status(500).json({message: "Internal Server Error"});
     }
   });
+
+
+  
 
 
 export default functions.https.onRequest(app);

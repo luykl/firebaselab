@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import ShoutOut from "../model/ShoutOut";
 import { createShoutOut, readAllShoutOuts } from "../service/ShoutOutApiService";
 import ShoutOutPost from "./ShoutOutPost";
 import ShoutOutForm from "./ShoutOutForm";
+import { AuthContext } from "../context/auth-context";
+
 
 function ShoutOutList() {
-
+    const { user } = useContext(AuthContext);
     const [ shoutOuts, setShoutOuts ] = useState<ShoutOut[]>([]);
     
 
@@ -35,8 +37,9 @@ function ShoutOutList() {
             {shoutOuts.map(eachShoutOut => 
                 <ShoutOutPost key={eachShoutOut._id} shoutOut={eachShoutOut}/>
             )}
-            <h2>Create New Shout Out</h2>
+            { user ? <><h2>Create New Shout Out</h2>
             <ShoutOutForm onSubmit={handleAddShoutOut}/>
+            </> : <p>Sign in to create new Shout Out</p>}
         </div>
     );
 }

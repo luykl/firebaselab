@@ -1,6 +1,7 @@
 body {
     font-family: sans-serif;
     background-color: #eee;
+    margin: 40px;
 }
 
 a {
@@ -15,8 +16,22 @@ button {
 .ShoutOutPost {
   background-color: white;
   border: 1px solid #aaa;
-  margin: 20px auto;
+  margin: 20px 0;
   max-width: 500px;
+  padding: 10px;
+}
+
+h2 {
+  font-size: 1.25em;
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+h3 {
+  font-size: 1em;
+  font-weight: normal;
+  color: darkgray;
+  margin-top: 0;
 }
 
 

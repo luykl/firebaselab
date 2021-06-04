@@ -13,3 +13,7 @@ export function readAllShoutOuts():Promise<ShoutOut[]> {
 export function createShoutOut(shoutOut: ShoutOut):Promise<ShoutOut> {
   return axios.post(baseUrl, shoutOut).then(res => res.data);
 }
+
+export function likeShoutOut(shoutOut: ShoutOut, userName:string):Promise<ShoutOut> {
+  return axios.put(`${baseUrl}/${encodeURIComponent(shoutOut._id!)}/${encodeURIComponent(userName)}`, shoutOut).then(res => res.data);
+}
