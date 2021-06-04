@@ -1,5 +1,5 @@
 import ShoutOut from "../model/ShoutOut";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../context/auth-context";
 // import { likeShoutOut } from "../service/ShoutOutApiService";
 
