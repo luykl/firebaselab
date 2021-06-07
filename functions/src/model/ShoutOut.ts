@@ -5,5 +5,6 @@ export default interface ShoutOut {
     to:string,
     from:string,
     message:string,
-    likes?:string[]
+    likes?:string[],
+    image?:string
 }

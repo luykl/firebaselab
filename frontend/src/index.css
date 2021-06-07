@@ -10,7 +10,8 @@ a {
 
 button {
   background-color: white;
-  border: 1px solid #999
+  border: 1px solid #999;
+  border-radius: 4px;
 }
 
 .ShoutOutPost {
@@ -32,6 +33,16 @@ h3 {
   font-weight: normal;
   color: darkgray;
   margin-top: 0;
+}
+
+.shoutOutImage {
+  width: 200px;
+}
+
+button:active {
+  background-color: darkmagenta;
+  color: #aaa;
+  border: none;
 }
 
 
