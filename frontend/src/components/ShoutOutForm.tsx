@@ -1,6 +1,7 @@
 import { FormEvent, useState, useRef } from "react";
 import ShoutOut from "../model/ShoutOut";
 import firebase from "../firebaseConfig";
+import { useAuthUser } from "../context/auth-context";
 
 interface Props {
   onSubmit: (shoutOut: ShoutOut) => void;
@@ -8,17 +9,18 @@ interface Props {
 
 function ShoutOutForm({ onSubmit }: Props) {
   const [ to, setTo ] = useState("");
-  const [ from, setFrom ] = useState("");
+  // const [ from, setFrom ] = useState("");
   const [ message, setMessage ] = useState("");
   const imageInputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const from = useAuthUser();
 
   function handleSubmit(event:FormEvent): void {
 
     event.preventDefault();
     const shoutOut: ShoutOut = {
       to: to,
-      from: from,
+      from: from?.displayName + "",
       message: message
     }
 
@@ -41,7 +43,7 @@ function ShoutOutForm({ onSubmit }: Props) {
     }
     function clearForm() {
       setTo("");
-      setFrom("");
+      // setFrom("");
       setMessage("");
       formRef.current?.reset();
     }
@@ -56,8 +58,8 @@ function ShoutOutForm({ onSubmit }: Props) {
         <input id="ShoutOutForm_to" value={to} onChange={e => setTo(e.target.value)}  />
       </p>
       <p>
-        <label htmlFor="ShoutOutForm_from">From</label>
-        <input id="ShoutOutForm_from" value={from} onChange={e => setFrom(e.target.value)}  />
+        <label htmlFor="ShoutOutForm_from">From </label>
+        <span>{from?.displayName}</span>
       </p>
       <p>
         <label htmlFor="ShoutOutForm_message">Message</label>

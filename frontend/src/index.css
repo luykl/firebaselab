@@ -45,6 +45,31 @@ button:active {
   border: none;
 }
 
+button:disabled {
+  background-color: darkgray;
+  color: gray;
+}
+
+.Likes {
+  width:fit-content;
+}
+
+.likeList {
+  position: relative;
+  bottom: 18px;
+  left: 60px;
+  display: flex;
+  padding: 0;
+  margin: 0
+  
+}
+
+li {
+    padding-right: 25px;
+    font-size: .8em;
+    color: darkgray
+}
+
 
 
 
